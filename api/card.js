@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     const svg = buildCardSvg(data)
 
     res.setHeader("Content-Type", "image/svg+xml")
-    res.setHeader("Cache-Control", "public, max-age=3600")
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
     return res.status(200).send(svg)
   } catch (error) {
     console.error(error)

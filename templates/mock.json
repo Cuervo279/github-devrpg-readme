@@ -1,0 +1,19 @@
+{
+  "user": "cuervo279",
+  "rpg": {
+    "level": 10,
+    "xp": 10,
+    "tier": "Gold",
+    "devClass": "Frontend Knight",
+    "subclass": "Web Rogue",
+    "guild": "🌐 Frontend Guild"
+  },
+  "stats": {
+    "repos": 56,
+    "commits": 171,
+    "stars": 4,
+    "followers": 14,
+    "following": 29
+  },
+  "top_languages": ["TypeScript", "JavaScript", "C#"]
+}

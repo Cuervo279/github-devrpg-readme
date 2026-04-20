@@ -1,18 +1,28 @@
-// Função de escape para garantir que nenhum caractere quebre o XML
-const xmlEscape = (str) => {
-  if (!str) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
-};
+<html>
+<body style="background:#0d1117">
 
-export function buildCardSvg(data) {
-  const { user, rpg, stats, top_languages, avatarBase64 } = data;
+<div id="card"></div>
 
-    console.log("Dados para SVG:", { user, rpg, stats, top_languages });
+<script>
+
+function xmlEscape(str){
+  return str.replace(/[<>&'"]/g, c => ({
+    '<':'&lt;',
+    '>':'&gt;',
+    '&':'&amp;',
+    "'":'&apos;',
+    '"':'&quot;'
+  }[c]))
+}
+
+async function load() {
+
+  const data = await fetch("./mock.json").then(r => r.json())
+
+  const user = data.user
+  const rpg = data.rpg
+  const stats = data.stats
+  const top_languages = data.top_languages
 
   const colors = {
     Legendary: "#ff335f",
@@ -21,14 +31,19 @@ export function buildCardSvg(data) {
     Gold: "#ffd700",
     Silver: "#c0c0c0",
     Bronze: "#cd7f32"
-  };
+  }
 
-  const themeColor = colors[rpg.tier] || "#00ff88";
-  const xpBarWidth = (rpg.xp / 50) * 100;
+  const themeColor = colors[rpg.tier] || "#00ff88"
 
-  return `
-    
-    <svg width="500" height="300" viewBox="0 0 450 250" xmlns="http://www.w3.org/2000/svg">
+  const xpNeeded = (rpg.level + 1) ** 2 * 100
+  const progress = rpg.xp / xpNeeded
+  const xpBarWidth = 100 * progress
+
+  const avatarBase64 = `https://avatars.githubusercontent.com/${user}`
+
+  const svg = `
+
+    <svg width="500" height="400" viewBox="0 0 450 200" xmlns="http://www.w3.org/2000/svg">
 
       <style>
         .header { font: 700 18px 'Segoe UI', Ubuntu, Sans-Serif; fill: #fff; }
@@ -79,5 +94,15 @@ export function buildCardSvg(data) {
       <text x="380" y="85" class="stat" text-anchor="middle" font-size="10">LEVEL</text>
 
     </svg>
-  `.trim();
+  `
+
+  document.getElementById("card").innerHTML = svg
+
 }
+
+load()
+
+</script>
+
+</body>
+</html>

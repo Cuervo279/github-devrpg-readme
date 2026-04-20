@@ -42,6 +42,7 @@ export async function getGithubData(username) {
     method: "POST",
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
+      "type": "module",
       "Content-Type": "application/json"
     },
     body: JSON.stringify(query)
@@ -50,7 +51,7 @@ export async function getGithubData(username) {
   return await githubRes.json()
 }
 
-// ESTA É A NOVA FUNÇÃO QUE CONCENTRA A LÓGICA
+
 export async function getUserStats(username) {
   const githubData = await getGithubData(username)
   const user = githubData.data?.user
@@ -59,7 +60,6 @@ export async function getUserStats(username) {
     throw new Error("USER_NOT_FOUND")
   }
 
-  // --- Lógica de Idade ---
   const createdAt = new Date(user.createdAt)
   const now = new Date()
   let ageYears = now.getFullYear() - createdAt.getFullYear()
@@ -68,7 +68,6 @@ export async function getUserStats(username) {
     ageYears--
   }
 
-  // --- Processamento de Repositórios ---
   let languageCount = {}
   let totalCommits = 0
   let totalStars = 0
@@ -91,7 +90,6 @@ export async function getUserStats(username) {
 
   const dev = getDevClass(topLanguages)
 
-  // --- Cálculo de RPG ---
   const score =
     user.contributionsCollection.totalCommitContributions +
     user.repositories.totalCount * 3 +
