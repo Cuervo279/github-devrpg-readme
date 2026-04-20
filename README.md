@@ -1,44 +1,36 @@
-# github-devrpg-readme
+# 🎮 GitHub Dev RPG Card
 
-💡 Transformei estatísticas do GitHub em um personagem de RPG.
+Transforme seu perfil do GitHub em um personagem de RPG. 
 
-Criei uma API que gera automaticamente um **Dev RPG Card** baseado nos dados públicos do GitHub.
+Esta API gera automaticamente um card SVG dinâmico com suas estatísticas de desenvolvedor, nível, classe e guilda baseado nos dados públicos do GitHub.
 
-Ela analisa:
+## 🚀 Como funciona
 
-• commits
-• repositórios
-• stars
-• seguidores
-• linguagens mais usadas
+A API coleta dados da **GitHub GraphQL API** e calcula um sistema de progressão inspirado em RPG. 
 
-E transforma tudo em um sistema de progressão com:
+**Alguns dos dados utilizados:**
+* Commits
+* Repositórios
+* Stars
+* Followers
+* Linguagens mais usadas
 
-🎮 Level
-⚡ XP
-🏆 Tier
-🧙 Classe de desenvolvedor
-🏰 Guilda tecnológica
+**Esses dados geram:**
+* 🎯 **Level**
+* ⚡ **XP**
+* 🏆 **Tier**
+* 🧙 **Classe de desenvolvedor**
+* 🏰 **Guilda tecnológica**
 
-O resultado é um **card SVG dinâmico** que pode ser usado direto no README.
+---
 
-Exemplo:
+## 📦 Como usar
 
-https://github-devrpg-readme.vercel.app/api/card?user=cuervo279
+Adicione o card diretamente no seu `README.md` utilizando a URL abaixo:
 
-Tecnologias usadas:
+`https://github-devrpg-readme.vercel.app/api/card?user=SEU_USUARIO`
 
-• Node.js
-• GitHub GraphQL API
-• SVG rendering
-• Serverless functions
-• Vercel
+### Exemplo:
 
-A ideia foi brincar com a **gamificação da jornada de desenvolvedor**.
-
-Porque no fim das contas…
-
-todo dev está evoluindo seu personagem todos os dias. 🎮
-
-Repositório do projeto:
-https://github.com/Cuervo279/github-devrpg-readme
+```markdown
+![Dev RPG Card](https://github-devrpg-readme.vercel.app/api/card?user=cuervo279)
