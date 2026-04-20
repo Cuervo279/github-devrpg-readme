@@ -1,5 +1,7 @@
 # 🎮 GitHub Dev RPG Card
 
+![Dev RPG Card](https://github.com/Cuervo279/github-devrpg-readme/blob/main/rpgcard.png)
+
 Transforme seu perfil do GitHub em um personagem de RPG. 
 
 Esta API gera automaticamente um card SVG dinâmico com suas estatísticas de desenvolvedor, nível, classe e guilda baseado nos dados públicos do GitHub.
